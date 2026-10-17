@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧬الشؤون الإدارية🧬</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap');
+:root{color-scheme:dark;--red:#ef3d50;--bg:#101216;--panel:#1b1e24;--border:#333a45;--muted:#aeb5c0;--text:#f5f6f8;--neon-red:var(--red);--glass-border:var(--border);--text-dim:var(--muted);}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'Readex Pro',Tahoma,sans-serif;line-height:1.7;padding-bottom:calc(95px + env(safe-area-inset-bottom));}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ff8895;outline-offset:3px}
+.app-header{border-bottom:1px solid var(--border);background:#15181e}.header-inner{max-width:850px;margin:auto;padding:20px 24px;display:flex;gap:14px;align-items:center}.crescent{color:var(--red);font-size:48px;line-height:1}.brand-title{font-size:20px;font-weight:700;margin:0}.brand-subtitle{color:var(--muted);font-size:12px;margin:0}.main-content{max-width:850px;margin:auto;padding:24px}.section-picker{margin-bottom:24px}.section-picker label{margin:0;color:var(--muted);font-size:13px}.form-section{display:none}.form-section h3{font-size:24px;margin:0 0 24px;display:flex;align-items:center;gap:10px}.form-section h3:before{content:'▤';color:var(--red)}h4{margin:0 0 15px}.tabs,.ambient-orb{display:none}
+label{display:block;font-size:14px;font-weight:500;margin:20px 0 8px}input,select,textarea{display:block;width:100%;min-height:52px;background:#13161b;color:var(--text);border:1px solid #424b59;border-radius:12px;padding:13px 15px;font-size:16px;text-align:right}input::placeholder,textarea::placeholder{color:#919ba9}textarea{resize:vertical;line-height:1.9}input[type=file][hidden]{display:none}select{cursor:pointer}.hint,.settings-note{font-size:13px;line-height:1.9;color:var(--muted);margin:16px 0}.hint b{color:var(--text)}button.generate{display:block;width:100%;min-height:52px;border:0;border-radius:12px;padding:13px 18px;margin:20px 0 0;background:var(--red);color:white;font-size:16px;font-weight:600}.copy-btn{background:#242a33!important;border:1px solid #424b59!important}.generate:hover{filter:brightness(1.1)}pre{margin:20px 0 0;border:1px solid var(--border);border-radius:14px;background:#13161b;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:14px/1.9 'Readex Pro',Tahoma,sans-serif;direction:rtl;min-width:0}pre:empty{display:none}.result-label{color:#ff8290;margin:24px 0 0}.result-group{display:flex;gap:16px}.result-box{flex:1;min-width:0}.integrated-template{margin-top:24px;padding:20px;background:var(--panel);border:1px solid var(--border);border-radius:16px}.quick-name{font-size:14px;font-weight:600}.quick-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:16px;max-width:802px;margin:0 auto 24px;padding:20px}.quick-header{font-weight:600;margin-bottom:12px}.quick-item{margin-top:10px}.quick-copy{width:100%;min-height:48px;background:#242a33;color:white;border:1px solid #424b59;border-radius:12px;padding:12px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#16191f;border-top:1px solid var(--border);padding:8px 12px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px}.bottom-nav button{position:relative;flex:1;max-width:240px;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:transparent;border:0;color:var(--muted);border-radius:10px;font-size:12px}.bottom-nav i{font-size:22px}.bottom-nav button.active{color:#ff6273;background:#ef3d5010}.bottom-nav button.active:after{content:'';position:absolute;bottom:0;width:40px;height:3px;border-radius:3px;background:var(--red)}
+.settings-tabs{display:flex;background:#13161b;border:1px solid var(--border);border-radius:12px;padding:4px;gap:4px;margin-bottom:20px}.settings-tabs button{flex:1;min-height:48px;border:0;border-radius:9px;color:var(--muted);background:transparent;font-size:14px}.settings-tabs button.active{background:var(--red);color:white}.settings-card{padding:22px;background:var(--panel);border:1px solid var(--border);border-radius:16px}.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.settings-grid label{margin:0}.settings-actions{display:flex;gap:10px;flex-wrap:wrap}.settings-actions button.generate{flex:1;min-width:150px;width:auto}#settingsTokens{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}#settingsTokens button{min-height:42px;border:1px solid #424b59;color:var(--text);background:#242a33;border-radius:8px;padding:8px;font-size:12px}#settingsStatus{min-height:28px;margin:14px 0 0;font-size:13px;color:#cbd3df;overflow-wrap:anywhere}.settings-more{margin-top:20px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}.settings-more summary{cursor:pointer;font-size:14px;min-height:28px}.settings-pane[hidden]{display:none}.signature-preview{margin-top:20px}.signature-preview pre{margin-top:10px}.signature-preview label{margin:0;color:var(--muted)}
+@media(max-width:600px){.header-inner{padding:16px 18px}.main-content{padding:22px 16px}.brand-title{font-size:18px}.crescent{font-size:42px}.form-section h3{font-size:22px;margin-bottom:20px}.settings-grid{grid-template-columns:1fr}.settings-card{padding:16px}.settings-actions{flex-direction:column}.settings-actions button.generate{width:100%;margin-top:12px;min-width:0}.result-group{flex-direction:column}.quick-panel{margin:0 16px 20px}pre{padding:16px;font-size:13px}.settings-tabs button{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.section-picker[hidden]{display:none!important}.section-picker label{margin-bottom:8px}.section-picker select{background:#1b1e25;border-color:#424b59}.form-card,.decision-card{background:linear-gradient(145deg,#1b1e25,#171a20);border:1px solid #343d49;border-radius:17px;padding:22px;box-shadow:0 8px 24px #00000016}.form-card>label:first-child{margin-top:0}.compact-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.compact-fields>div{min-width:0}.compact-fields label{font-size:13px}.paste-field{display:flex;align-items:center;gap:8px}.paste-field input{min-width:0;flex:1}.paste-button{min-height:44px;min-width:54px;border:1px solid #424b59;border-radius:10px;background:#282e38;color:#f5f6f8;padding:8px 10px;font-size:13px}.paste-button:disabled{opacity:.6}.decision-card{margin-top:20px}.decision-title{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}.decision-title i{color:#aeb5c0}.decision-card pre{margin-top:14px;min-height:76px}.decision-card pre:empty{display:block}.decision-card pre:empty:before{content:'سيظهر القرار هنا بعد إنشائه';color:#919ba9}.hint{font-size:12px}.form-section h3:before{content:none}.form-section h3{justify-content:space-between}.form-section h3:after{content:'▤';color:var(--red);font-size:28px}.forms-menu{width:min(540px,calc(100% - 24px));max-height:75dvh;margin:auto auto calc(96px + env(safe-area-inset-bottom));background:#1b1e24;color:white;border:1px solid #424b59;border-radius:20px;padding:20px;overflow:auto;box-shadow:0 20px 60px #0008}.forms-menu::backdrop{background:#0009}.menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.menu-header h3{font-size:19px;margin:0}.menu-close{width:44px;height:44px;background:#282e38;border:0;border-radius:10px;color:white;font-size:20px}.menu-options{display:grid;gap:8px}.menu-options button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:54px;text-align:right;background:#13161b;border:1px solid #343d49;border-radius:12px;color:white;padding:12px 16px}.menu-options button.current{border-color:var(--red);background:#ef3d5015}.paste-status{position:fixed;bottom:calc(100px + env(safe-area-inset-bottom));right:16px;left:16px;margin:0 auto;max-width:580px;background:#303743;border:1px solid #667184;border-radius:12px;padding:12px 16px;z-index:200;font-size:13px}.paste-status[hidden]{display:none}
+@media(max-width:600px){.form-card,.decision-card{padding:16px}.main-content{padding-top:24px}.compact-fields{gap:10px}.compact-fields label{font-size:12px}.compact-fields input{padding:12px;min-height:50px}.form-card button.generate{margin-top:18px}.form-card .hint{margin-bottom:0}}
+
+.sector-row{display:flex;gap:10px;align-items:center;margin-bottom:12px}.sector-row input{min-width:0;flex:1}.sector-remove{min-height:46px;border:1px solid #753b46;border-radius:10px;background:#44242b;color:#ffabb6;padding:10px 14px;font-size:13px}#sectorNotice{font-size:13px;color:var(--muted)}.settings-tabs{flex-wrap:wrap}.settings-tabs button{min-width:100px}.settings-card{background:linear-gradient(145deg,#1b1e25,#171a20)}
+@media(max-width:600px){.settings-tabs button{font-size:12px;padding:8px 5px;min-width:85px}.sector-row{gap:8px}}
+
+.settings-home{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:transparent;border:0;padding:0}.settings-home button{min-height:56px;border:1px solid #424b59;background:#1b1e24;font-size:13px}.builder-field{margin:16px 0;padding:16px;border:1px solid #424b59;border-radius:12px;background:#13161b}.builder-field>label:first-child{margin-top:0}.check-label{display:flex;align-items:center;gap:10px}.check-label input{width:22px;min-height:22px;accent-color:var(--red)}#builderTokens{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}#builderTokens button{min-height:44px;background:#303742;border:1px solid #546170;color:white;border-radius:9px;padding:8px 14px}.custom-list-row{display:flex;gap:8px;align-items:center;padding:15px 0;border-bottom:1px solid #343d49}.custom-list-row strong{flex:1;overflow-wrap:anywhere;font-size:14px}#customEditor{margin-top:24px;border-top:1px solid #424b59;padding-top:20px}#builderStatus{color:#ffacb6;font-size:13px}#saveSettings[hidden],#customEditor[hidden],.field-options[hidden]{display:none}input[inputmode=numeric]{font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+select.choice-native{display:none!important}.choice-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.choice-group button{--c:#3d7be0;min-height:40px;padding:7px 12px;background:#1d2129;border:1px solid #3a424e;border-radius:10px;color:#c9d0da;font-size:13px;line-height:1.5;text-align:center;transition:background .15s,border-color .15s,color .15s}.choice-group button:hover{background:#252a33;border-color:#56627a}.choice-group button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff;font-weight:600;box-shadow:0 4px 14px color-mix(in srgb,var(--c) 35%,transparent)}.action-row{display:flex;gap:10px;margin-top:20px}.action-row button.generate{flex:1;margin:0!important;width:auto}.decision-card .quick-panel{margin:14px 0 0;padding:14px 0 0;max-width:none;background:none;border:0;border-top:1px solid #343d49;border-radius:0}.decision-card .quick-header{font-size:13px;color:var(--muted);margin-bottom:0}
+@media(max-width:600px){.choice-group{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.choice-group button{min-height:38px;font-size:12.5px;padding:6px 8px}.choice-group button:last-child:nth-child(odd){grid-column:1/-1}#role_type+.choice-group{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- الخلفية المضيئة -->
+<div class="ambient-orb"></div>
+
+<!-- القائمة الجانبية الجديدة التي تتحكم بالأقسام -->
+<header class="app-header"><div class="header-inner"><span class="crescent" aria-hidden="true">☾</span><div><h1 class="brand-title">الشؤون الإدارية</h1><p class="brand-subtitle">الهلال الأحمر • بوليتو</p></div></div></header>
+
+<!-- المحتوى الرئيسي -->
+<main class="main-content"><div class="section-picker" id="sectionPicker"><label for="mobileSection">اختر القسم</label><select id="mobileSection" onchange="showForm(this.value)"><option value="internalLeave">الإجازة الداخلية</option><option value="resignation">الاستقالة / إنهاء الخدمات</option><option value="externalLeave">الإجازة الخارجية</option><option value="assignment">الانتداب</option><option value="rolesRequest">طلب الرولات</option></select></div>
+
+  <div class="tabs">
+    <button class="tab-btn" onclick="showForm('internalLeave')">الإجازة الداخلية</button>
+    <button class="tab-btn" onclick="showForm('resignation')">الاستقالة</button>
+    <button class="tab-btn" onclick="showForm('externalLeave')">إجازة خارجية</button>
+    <button class="tab-btn" onclick="showForm('assignment')">نموذج الانتداب</button>
+    <button class="tab-btn" onclick="showForm('rolesRequest')">طلب الرولات</button>
+    <button class="tab-btn" onclick="showForm('ticketTemplates')">نماذج التكتات</button>
+  </div>
+
+  <div id="internalLeave" class="form-section" style="display:block;">
+    <h3>الإجازة الداخلية</h3><div class="form-card">
+    <label>الكوبي يوزر:</label>
+    <div class="paste-field"><input type="text" id="int_copyUser" placeholder="أدخل الكوبي يوزر"><button type="button" class="paste-button" onclick="pasteMedic('int_copyUser',this)" aria-label="لصق من الحافظة">لصق</button></div>
+<div class="compact-fields"><div><label>مدة الإجازة (بالساعات):</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="int_vac_duration" placeholder="عدد الساعات"></div><div><label>الرصيد المتبقي (بالساعات):</label>
+    <input type="number" inputmode="numeric" pattern="[0-9]*" id="int_vac_balance" placeholder="عدد الساعات"></div></div>
+    <div class="hint">⏱️ سيتم ضبط وقت بدء الإجازة تلقائيًا بعد <b>5 دقائق</b> من الضغط على “إنشاء القرار” (توقيت مكة المكرمة).</div>
+
+    <div class="action-row"><button class="generate" onclick="generateInternalLeave()">إنشاء القرار</button><button class="generate copy-btn" onclick="copyInternalLeave()">نسخ القرار</button></div></div>
+    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة القرار</div><pre id="int_output"></pre></div>
+    
+    <label class="result-label" id="int_role_label" style="display:none;">رسالة طلب الرول:</label>
+    <pre id="int_role_output" class="role-pre" style="display:none;"></pre>
+    <button class="generate copy-btn" onclick="copyInternalRole()" id="copyIntRoleBtn" style="display:none;">نسخ طلب الرول</button>
+    
+    <div class="integrated-template">
+        <div class="quick-name"> نموذج غير مستوفين شروط الاجازة داخلية</div>
+        <pre id="intNotMetPre" style="display:none;">
+غير مستوفي شروط الاجازه 
+عدم اكمال 3 ساعات مباشرة في الميدان وللعلم الايام المسموح فيها اخذ الاجازه من دون مباشره 3 ساعات هي الاحد - الثلاثاء - الجمعه )
+
+شكراً لتواصلكم مع <:imagesremovebgpreview:1086073447840485527> الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو <:imagesremovebgpreview:1086073447840485527>
+في حال عدم وجود استفسارات أخرى يرجى إغلاق التكت وتقييم مستوى الخدمة ؛
+شاكرين ومقدرين لكم , دمت
+        </pre>
+        <button class="generate copy-btn" style="background: #d9534f !important;" onclick="copySpecificTemplate('intNotMet')">نسخ صيغة عدم الإكمال</button>
+    </div>
+  </div>
+
+  <div id="resignation" class="form-section">
+    <h3>الاستقالة / إنهاء خدمات</h3><div class="form-card">
+    <label>مستوى المسعف:</label>
+    <select id="res_level" onchange="updateResFields()">
+      <option value="">-- اختر المستوى --</option>
+      <option value="متدرب">متدرب</option>
+      <option value="مستوى 1">مستوى 1</option>
+      <option value="مستوى 2 فما فوق">مستوى 2 فما فوق</option>
+    </select>
+    <label>اسمه وكوده الميداني:</label>
+    <input type="text" id="res_nameCode" placeholder="أدخل الاسم والرقم الميداني">
+    <label>الكوبي ايدي:</label>
+    <div class="paste-field"><input type="text" id="res_copyId" placeholder="أدخل الكوبي ايدي"><button type="button" class="paste-button" onclick="pasteMedic('res_copyId',this)" aria-label="لصق من الحافظة">لصق</button></div>
+    <div id="res_violationsField">
+      <label>هل يوجد عليه مخالفات سابقه:</label>
+      <select id="res_hasViolations">
+        <option value="لا">لا</option>
+        <option value="نعم">نعم</option>
+      </select>
+    </div>
+    <div class="action-row"><button class="generate" onclick="generateResignation()">إنشاء القرار</button><button class="generate copy-btn" onclick="copyResignation()">نسخ القرار</button></div></div>
+    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة القرار</div><pre id="res_output"></pre></div>
+    
+    <div class="result-group" id="res_extra_results">
+      <div class="result-box" id="res_pull_box" style="display:none;">
+        <label class="result-label" id="res_pull_label">رسالة السحب المالية:</label>
+        <pre id="res_pull_output" class="pull-pre"></pre>
+        <button class="generate copy-btn" onclick="copyResignationPull()" id="copyPullBtn">نسخ رسالة السحب</button>
+      </div>
+      <div class="result-box" id="res_role_box" style="display:none;">
+        <label class="result-label" id="res_role_label">رسالة طلب الرول:</label>
+        <pre id="res_role_output" class="role-pre"></pre>
+        <button class="generate copy-btn" onclick="copyResignationRole()" id="copyResRoleBtn">نسخ طلب الرول</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="externalLeave" class="form-section">
+    <h3>إجازة خارجية</h3><div class="form-card">
+    <label>أختر نوع الاجازة الخارجية:</label>
+    <select id="ext_leaveType" onchange="updateExtForm()">
+      <option value="">-- اختر نوع الإجازة --</option>
+      <option value="اجازة خارجية">اجازة خارجية</option>
+      <option value="تمديد اجازة خارجية">تمديد اجازة خارجية</option>
+      <option value="انتهاء اجازة خارجية">انتهاء اجازة خارجية</option>
+    </select>
+    <label>الكوبي ايدي:</label>
+    <div class="paste-field"><input type="text" id="ext_copyUser" placeholder="أدخل الكوبي ايدي"><button type="button" class="paste-button" onclick="pasteMedic('ext_copyUser',this)" aria-label="لصق من الحافظة">لصق</button></div>
+    <div id="ext_leaveDaysField" style="display:none;">
+      <label>مدة الإجازة (بالأيام):</label>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="ext_leaveDays" placeholder="أدخل عدد الأيام">
+    </div>
+    <div id="ext_extensionField" style="display:none;">
+      <label>تاريخ انتهاء الاجازة السابقة:</label>
+      <input type="date" id="ext_previousEndDate">
+      <label>مدة التمديد (بالأيام):</label>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="ext_extensionDays" placeholder="أدخل عدد الأيام">
+    </div>
+    <div class="action-row"><button class="generate" onclick="generateExternalLeave()">إنشاء القرار</button><button class="generate copy-btn" onclick="copyExternalLeave()">نسخ القرار</button></div></div>
+    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة القرار</div><pre id="ext_output"></pre></div>
+    <label class="result-label" id="ext_role_label" style="display:none;">رسالة طلب الرول:</label>
+    <pre id="ext_role_output" class="role-pre" style="display:none;"></pre>
+    <button class="generate copy-btn" onclick="copyExternalRole()" id="copyExtRoleBtn" style="display:none;">نسخ طلب الرول</button>
+  </div>
+
+  <div id="assignment" class="form-section">
+    <h3>نموذج الانتداب</h3><div class="form-card">
+    <label>نوع العملية:</label>
+    <select id="ass_type" onchange="toggleAssFields()">
+      <option value="new">انتداب جديد</option>
+      <option value="return">عودة من انتداب</option>
+    </select>
+    <label>الكوبي ايدي:</label>
+    <div class="paste-field"><input type="text" id="ass_copyId" placeholder="أدخل الكوبي ايدي "><button type="button" class="paste-button" onclick="pasteMedic('ass_copyId',this)" aria-label="لصق من الحافظة">لصق</button></div>
+    <div id="ass_new_fields">
+      <label>اختر القطاع المنتدب اليه:</label>
+      <select id="ass_sector">
+        <option value="">-- اختر القطاع --</option>
+        <option value="شرطة بوليتو ">شرطة بوليتو </option>
+        <option value="ادارة الشيرف">ادارة الشيرف</option>
+        <option value="ادارة الطرق">ادارة الطرق</option>
+         <option value=" شرطة لوس  "> شرطة لوس  </option>
+       <option value="كراج الميكانيكي">كراج الميكانيكي</option>
+      </select>
+      <label>المدة بالايام:</label>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="ass_duration" placeholder="أدخل المدة بالأيام">
+    </div>
+    <div class="action-row"><button class="generate" onclick="generateAssignment()">إنشاء القرار</button><button class="generate copy-btn" onclick="copyAssignment()">نسخ القرار</button></div></div>
+    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة القرار</div><pre id="ass_output"></pre></div>
+    <label class="result-label" id="ass_role_label" style="display:none;">رسالة طلب الرول:</label>
+    <pre id="ass_role_output" class="role-pre" style="display:none;"></pre>
+    <button class="generate copy-btn" onclick="copyAssignmentRole()" id="copyAssRoleBtn" style="display:none;">نسخ طلب الرول</button>
+  </div>
+
+  <div id="rolesRequest" class="form-section">
+    <h3>طلب الرولات</h3><div class="form-card">
+    <label>الكوبي ايدي:</label>
+    <div class="paste-field"><input type="text" id="role_copyId" placeholder="أدخل الكوبي ايدي"><button type="button" class="paste-button" onclick="pasteMedic('role_copyId',this)" aria-label="لصق من الحافظة">لصق</button></div>
+    <label>نوع الطلب:</label>
+    <select id="role_type">
+      <option value="">-- اختر نوع الطلب --</option>
+      <option value="ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 14 يوم">ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 14 يوم</option>
+      <option value="ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 7 ايام">ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 7 ايام</option>
+      <option value="ازاله رولات الهلال الاحمر + ازاله الاسم">ازاله رولات الهلال الاحمر + ازاله الاسم</option>
+      <option value="اضافه رول اجازة وظيفيه">اضافه رول اجازة وظيفيه</option>
+      <option value="ازاله رول اجازة وظيفيه">ازاله رول اجازة وظيفيه</option>
+      <option value="اضافة رول العمليات">اضافة رول العمليات</option>
+      <option value="ازاله رولات الهلال الاحمر">ازاله رولات الهلال الاحمر</option>
+    </select>
+    <div class="action-row"><button class="generate" onclick="generateRoleRequest()">إنشاء الطلب</button><button class="generate copy-btn" onclick="copyRoleRequest()">نسخ الطلب</button></div></div>
+    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة الطلب</div><pre id="role_output"></pre></div>
+  </div>
+
+  <div id="ticketTemplates" class="form-section">
+    <h3>نماذج التكتات</h3><div class="form-card">
+    <label>اختر الصيغة:</label>
+    <select id="templateSelect" onchange="showTemplate()">
+      <option value="">-- اختر الصيغة --</option>
+      <option value="داخلية">صيغة الإجازة الداخلية</option>
+      <option value="خارجية">صيغة الإجازة الخارجية</option>
+      <option value="عودةداخلية">صيغة العودة من إجازة داخلية</option>
+      <option value="عودةخارجية">صيغة العودة من إجازة خارجية</option>
+      <option value="غيرمستوفين">صيغة الإجازة الداخلية لغير المستوفين</option>
+      <option value="قبولاستقالة">صيغة قبول الإستقالة</option>
+      <option value="سفلة">صيغة الإستقالة للمتدرب</option>
+      <option value="رفض">صيغة الإستقالة لمستوى 1</option>
+      <option value="اهمال">صيغة إهمال التكت</option>
+      <option value="ازالة">صيغة إزالة منع التوظيف</option>
+      <option value="انتداب">صيغة قبول الإنتداب</option>
+      <option value="موادع">صيغة الموادع</option>
+      <option value="انعاش">صيغة طلب الانعاش</option>
+      <option value="شكوى">صيغة استلام الشكوى</option>
+    <option value="قياديتسجيل">تسجيل الاذن القيادي</option>
+<option value="قياديعودة">العوده بعد اخد اذن قيادي</option>
+</select>
+    <div id="daysBox" style="display:none; margin-top:10px;">
+      <label>مدة الانتداب (أيام):</label>
+      <input type="number" inputmode="numeric" pattern="[0-9]*" id="daysInput" value="5" oninput="updateDays()" placeholder="عدد الأيام">
+    </div>
+</div>    <div class="decision-card"><div class="decision-title"><i class="fa-regular fa-eye" aria-hidden="true"></i> معاينة الصيغة</div><pre id="templateBox" style="min-height:120px; margin-top:12px;"></pre><button class="generate copy-btn" onclick="copyTemplate()">نسخ الصيغة</button></div>
+  </div>
+
+<div id="customFormHost"></div>
+<div id="formulaSettings" class="form-section">
+<h3>إعدادات الصيغ</h3>
+<p class="settings-note">اختار اللي بدك تعدّله. الصيغ الجديدة بتظهر في قائمة النماذج بعد حفظها.</p>
+<div class="settings-tabs settings-home" aria-label="خيارات الإعدادات"><button type="button" id="signatureTab" class="active" aria-selected="true" onclick="switchSettingsPane('signature')">التوقيع والمنشنات</button><button type="button" id="textTab" aria-selected="false" onclick="switchSettingsPane('text')">تعديل صيغة موجودة</button><button type="button" id="sectorsTab" aria-selected="false" onclick="switchSettingsPane('sectors')">قطاعات الانتداب</button><button type="button" id="customTab" aria-selected="false" onclick="switchSettingsPane('custom')">إضافة صيغ وحقول</button></div><div class="settings-card settings-pane" id="signaturePane" role="tabpanel" aria-labelledby="signatureTab"><h4>المنشنات المشتركة</h4><div id="mentionFields" class="settings-grid"></div>
+<label for="settingsSignature">توقيع واعتماد القرارات</label><textarea id="settingsSignature" rows="6"></textarea>
+<div class="signature-preview"><label for="signaturePreview">معاينة التوقيع</label><pre id="signaturePreview"></pre></div></div><div class="settings-card settings-pane" id="textPane" role="tabpanel" aria-labelledby="textTab" hidden><label for="settingsTemplate">الصيغة المطلوب تعديلها</label><select id="settingsTemplate"></select>
+<p class="settings-note">عدّل النص مباشرة. لإضافة بيانات مثل اسم المسعف أو المدة، اضغط الزر باسمها أسفل هذا الشرح.</p>
+<div id="settingsTokens"></div>
+<label for="settingsText">نص الصيغة</label><textarea id="settingsText" rows="14"></textarea>
+<label>معاينة ببيانات توضيحية</label><pre id="settingsPreview"></pre>
+<button class="generate copy-btn" id="resetTemplate">استعادة هذه الصيغة</button></div><div class="settings-card settings-pane" id="sectorsPane" role="tabpanel" aria-labelledby="sectorsTab" hidden><h4>قطاعات الانتداب</h4><p class="settings-note">عدّل الاسم داخل الحقل، أو احذف القطاع، أو أضف قطاع جديد. اضغط حفظ التغييرات لتحديث قائمة الانتداب.</p><div id="sectorRows"></div><button type="button" class="generate copy-btn" id="addSector">+ إضافة قطاع</button><p id="sectorNotice" role="status" aria-live="polite"></p></div><div class="settings-card settings-pane" id="customPane" hidden><h4>الصيغ الإضافية</h4><button type="button" class="generate" onclick="openCustomBuilder()">+ إضافة صيغة جديدة</button><div id="customList"></div><div id="customEditor" hidden><h4 id="builderTitle">صيغة جديدة</h4><label for="builderName">1. اسم الصيغة</label><input id="builderName" maxlength="100" placeholder="مثال: طلب نقل قطاع"><label>2. الحقول اللي تحتاجها</label><p class="settings-note">أضف الحقول واختر نوع كل حقل. للقائمة، اكتب الخيارات كل واحد في سطر.</p><div id="builderFields"></div><button type="button" class="generate copy-btn" onclick="collectBuilderFields();if(builderFields.length<30){builderFields.push(newBuilderField());renderBuilderFields();}else{document.getElementById('builderStatus').textContent='الحد الأقصى 30 حقل';}">+ إضافة حقل</button><label for="builderBody">3. نص الصيغة</label><p class="settings-note">اكتب النص، واضغط اسم الحقل لإضافته بالمكان المطلوب. البيانات تتعبّى وقت استخدام النموذج.</p><div id="builderTokens"></div><textarea id="builderBody" rows="8" placeholder="اكتب نص القرار أو الرد هنا"></textarea><p id="builderStatus" role="status" aria-live="polite"></p><button type="button" class="generate" onclick="saveCustomBuilder()">حفظ الصيغة وإضافتها للنماذج</button><button type="button" class="generate copy-btn" onclick="document.getElementById('customEditor').hidden=true;editingCustomId=null;">إلغاء</button></div></div><button class="generate" id="saveSettings">حفظ التغييرات</button><details class="settings-more"><summary>نسخ احتياطي ومشاركة الإعدادات</summary><button class="generate copy-btn" id="resetSettings">استعادة جميع الإعدادات</button>
+<div class="settings-actions"><button class="generate copy-btn" id="exportSettings">تصدير الإعدادات</button><button class="generate copy-btn" id="importSettings">استيراد الإعدادات</button><button class="generate" id="downloadSite">تنزيل ملف الموقع بإعداداتي</button></div>
+</details><input id="settingsFile" type="file" accept="application/json,.json" hidden><p id="settingsStatus" role="status" aria-live="polite"></p>
+</div>
+</main><dialog id="formsMenu" class="forms-menu" aria-labelledby="formsMenuTitle"><div class="menu-header"><h3 id="formsMenuTitle">اختر القسم</h3><button type="button" class="menu-close" onclick="closeFormsMenu()" aria-label="إغلاق القائمة">✕</button></div><div class="menu-options"><button type="button" data-section="internalLeave" onclick="chooseForm('internalLeave')">الإجازة الداخلية<span aria-hidden="true">‹</span></button><button type="button" data-section="resignation" onclick="chooseForm('resignation')">الاستقالة<span aria-hidden="true">‹</span></button><button type="button" data-section="externalLeave" onclick="chooseForm('externalLeave')">إجازة خارجية<span aria-hidden="true">‹</span></button><button type="button" data-section="assignment" onclick="chooseForm('assignment')">نموذج الانتداب<span aria-hidden="true">‹</span></button><button type="button" data-section="rolesRequest" onclick="chooseForm('rolesRequest')">طلب الرولات<span aria-hidden="true">‹</span></button></div></dialog><p id="pasteStatus" class="paste-status" role="status" aria-live="polite" hidden></p><nav class="bottom-nav" aria-label="التنقل الرئيسي"><button type="button" id="navForms" class="active" onclick="openFormsMenu()" aria-haspopup="dialog" aria-controls="formsMenu"><i class="fa-regular fa-file-lines" aria-hidden="true"></i><span>النماذج</span></button><button type="button" id="navTickets" onclick="showForm('ticketTemplates')"><i class="fa-solid fa-list" aria-hidden="true"></i><span>التكتات</span></button><button type="button" id="navSettings" hidden onclick="showForm('formulaSettings')"><i class="fa-solid fa-gear" aria-hidden="true"></i><span>الإعدادات</span></button></nav>
+
+<div id="quickPanel" class="quick-panel" dir="rtl">
+  <div class="quick-header">📎 نماذج التكتات المناسبة</div>
+  <div id="quickList"></div>
+</div>
+
+<script id="embeddedFormulaSettings" type="application/json">null</script>
+<script>
+const FORMULA_DEFAULTS = {"mentions": {"issuer": "<@&1071933369698496532>", "leaderRole": "<@&1071933358503903242>", "leader": "<@813079786855464961>", "deputyRole": "<@&1071933359086911561>", "deputy": "<@1162195276514197527>", "rolesAdmin": "<@&1092667422902862004>", "rolesTeam": "<@&1153823182281777293>"}, "signature": "{{leaderRole}}\n{{leader}}\n\n{{deputyRole}}\n{{deputy}}", "templates": {"roleRequest": "\nالشخص : {{user}}\n\nالموضوع : {{type}}\n\n\n{{leaderRole}}            \n{{deputyRole}}            \n{{rolesAdmin}}            \n{{rolesTeam}}\n", "internalDecision": "﷽\n\n**قرار صـادر مـن {{issuer}}**\n\nالموضوع : إجازة داخلية\n\nللمسعف : {{user}}\n\nالمدة : {{duration}} ساعة\n\nمن الساعة : {{start}}\nإلى الساعة : {{end}}\n\nالرصيد المتبقي : {{remaining}} ساعة\n\nإعتماد :\n{{signature}}\n", "financialPull": "{{user}}\n\n{{amount}}\n\n عملية سحب ناجحه  ( {{type}} )", "termination": "﷽**\n\nقرار صـادر مـن {{issuer}} \n\nالموضوع : إنهاء خدمات\n\nالمسعف : {{user}}\n\nاسمه وكوده الميداني : {{nameCode}}\n\nهل يوجد عليه مخالفات سابقه : {{violations}}\n \nالعقوبة الاجماليه : فصل من الخدمه + منع من التوظيف ({{days}}) ايام + غرامه مالية بقيمه ({{fine}})\n\nسبب الفصل من الخدمة : {{reason}}\n\nإعتماد :\n{{signature}}    **", "resignationDecision": "﷽**\n\nقرار صـادر مـن {{issuer}} \n\nالموضوع : استقالة \n\nالمسعف : {{user}}\n\nاسمه وكوده الميداني : {{nameCode}}\n\nهل يوجد عليه مخالفات سابقه : {{violations}}  \n\nنشكر جهودك المبذولة والملحوظة لدى القطاع ونسأل الله لك التوفيق\n\nإعتماد :\n{{signature}}    **", "externalEnd": "**﷽\n\nقرار صـادر مـن {{issuer}} \n\nالموضوع : انتهاء اجازه خارجيه\n\nالمسعف : {{user}}\n\nإعتماد :\n{{signature}}    **", "externalNew": "﷽**\n\nقرار صـادر مـن {{issuer}} \n\nالموضوع : اجازة خارجية \n\nللمسعف : {{user}}\n\nالمدة : {{days}} يوم\n\nمن تاريخ : {{start}}\n\nإلى تاريخ : {{end}}\n\nإعتماد :\n{{signature}}    **", "externalExtend": "﷽\n\n**قرار صـادر مـن {{issuer}} \n\nالموضوع : تمديد اجازة خارجية \n\nللمسعف : {{user}}\n\nالمدة : {{days}} يوم\n\nإلى تاريخ : {{end}}\n\nإعتماد :\n{{signature}}    **", "assignmentNew": "﷽\n\n**قرار صادر من {{issuer}} \n\nالموضوع : انتداب\n\nللمسعف : {{user}}\n\nالقطاع المنتدب له : {{sector}}\n\nالمدة : {{duration}}\n\nالى تاريخ : {{year}}/{{month}}/{{day}}\n\nإعتماد :\n{{signature}}    **", "assignmentEnd": "**﷽\n\nقرار صـادر مـن {{issuer}} \n\nالموضوع : انتهاء إنتداب \n\nالمسعف : {{user}}\n\nإعتماد :\n{{signature}}    **", "ticket_داخلية": "لقد تم منحك إجازة داخلية محدودة الشروط :\n\n1- يرجى الإلتزام بتاريخ العودة المدون في : https://discord.com/channels/1071933157097615480/1202354280514990212 وقم بالتفاعل بـ ✅ على الإجازة.\n\n2- في حال عدم التفاعل وعدم تغيير الوظيفة خلال أول 15 دقيقة سوف تلغى اجازتك , ولا يحق لك المطالبة بإسترداد رصيدها .\n\n3- عند إنتهاء توقيت الإجازة قم بفتح تذكرة مساعدة من الشؤون الإدارية لإثبات العودة مع تصوير الهوية .\n\n4- يمنع طلب التمديد أو طلب إجازة أخرى في نفس اليوم .\n  ```", "ticket_intNotMet": "**الإجازة الداخلية لغير الموهلين :\n\n -رفض طلب إجازتك الداخلية بسبب :  طلب إجازة داخلية في غير الأيام المسموحة ودون المباشرة 3 ساعات وهي ( الاحد - الثلاثاء - الجمعة . )\n\n-رفض طلب إجازتك الداخلية بسبب : عدم توفر 20 وحده في الميدان دون احتساب المشرفين و القيادة .\n \n**", "ticket_خارجية": "لقد تم منحك إجازة خارجية وفق الشروط التالية:\n\n**1- يرجى الإلتزام بتاريخ العودة المدون في : https://discord.com/channels/1071933157097615480/1202354280514990212 وقم بالتفاعل بـ ✅  على الإجازة.**\n\n**2- يسمح لك بالتمديد قبل إنتهاء الاجازة حسب https://discord.com/channels/1071933157097615480/1071934528320454818/1289312826229391471  .**\n\n**3- سيتم منحك رول ( اجازه وظيفيه )  في حال العوده من الاجازه رجاءاً قم بفتح تيكت لابلاغنا بعودتك وسماح الادارة بالمباشرة الميدانية.**\n\n***عدم إلتزامك بأي تنويه مدون أعلاه يعرضك للمخالفة .***", "ticket_عودةداخلية": "\n**تم تسجيل عودتكم بنجاح يمكنك الان المباشره <:jobcenter:1152025666154418186> \n\nشكراً لتواصلكم مع <:imagesremovebgpreview:1086073447840485527> الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو  <:imagesremovebgpreview:1086073447840485527>  \nفي حال عدم وجود استفسارات أخرى يرجى إغلاق التكت وتقييم مستوى الخدمة ؛\nشاكرين ومقدرين لكم , دمتم بخير .**", "ticket_عودةخارجية": "عوداً حميداً ونتمنى التوفيق لك في الميدان\n\nشكراً لتواصلكم مع <:imagesremovebgpreview:1086073447840485527> الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو <:imagesremovebgpreview:1086073447840485527>\nفي حال عدم وجود استفسارات أخرى يرجى إغلاق التكت وتقييم مستوى الخدمة ؛\nشاكرين ومقدرين لكم , دمتم بخير .", "ticket_غيرمستوفين": "الإجازة الداخلية لغير الموهلين :\n\n- سيتم رفض طلب إجازتك الداخلية بسبب : ( طلب إجازة داخلية في غير الأيام المسموحة ودون المباشرة 3 ساعات . )\n- ثانياً : سيتم اصدار لك انذار + تأخير ترقية + (غرامة بقيمة 500 الف ).", "ticket_قبولاستقالة": "تم قبول طلب استقالتك بنجاح ونشكر جهودك المبذولة والملحوظة لدى القطاع ونسأل الله لك التوفيق والسداد .\n\nتوقيع واعتماد :\n{{signature}}", "ticket_سفلة": "بناءًا على رغبتك في الاستقالة عليك الالتزام بما هو آت:\n\n1-اذكر موقعك للمشرف\n2-سيصدر لك غرامة بقيمة ( 1.000.000 )\n3-سيتم منحك رول منع توظيف ( 14 يوم )\n4-بعد نزول القرار فورًا توجة لمركز التوظيف قم بتغيير وظيفتك خلاف ذلك يعتبر تهرب وظيفي", "ticket_رفض": "بناءًا على رغبتك في الاستقالة عليك الالتزام بما هو آت :\n\n1-اذكر موقعك للمشرف\n2-سيصدر لك غرامة بقيمة ( 500.000 )\n3-سيتم منحك رول منع توظيف ( 7 أيام )\n4-بعد نزول القرار فورًا توجة لمركز التوظيف قم بتغيير وظيفتك خلاف ذلك يعتبر تهرب وظيفي", "ticket_اهمال": "عزيزي المستفيد :\nإهمال التكت مخالفة منصوص عليها في دستور مقاطعة بوليتو فضلاً نرجو عدم اهمال التكت <:imagesremovebgpreview:1086073447840485527>", "ticket_ازالة": "عزيزي المستفيد : <:imagesremovebgpreview:1086073447840485527>\n\nشاكرين لك تواصلك وتم التحقق من بياناتك وسيتم خلال الساعات القادمة إزالة منع التوظيف <:imagesremovebgpreview:1086073447840485527>", "ticket_انتداب": "لقد تم منحك أنتداب لمدة {{days}} أيام :\n\n1- يرجى الإلتزام بتاريخ العودة المدون في : https://discord.com/channels/1071933157097615480/1202354280514990212 و قم بالتفاعل بـ ✅ على الانتداب .\n\n2- في حال تم قبول انتدابك من قبل القطاع الثانوي ، بأمكانك تغيير وظيفتك بعد الحصول على رول منتدب.\n\n3- يمنع منعاً باتا كسر الانتداب قبل انتهاء مدة انتدابك ، وكسر الانتداب فقط من قبل القيادة .\n\n4- عند انتهاء مدة الانتداب، يجب فتح تكت عودة من الانتداب عبر الشؤون الإدارية لإتمام إجراءات العودة. ***\n\n***عدم إلتزامك بأي تنويه مدون أعلاه يعرضك للمخالفة .***", "ticket_موادع": "شكراً لتواصلكم مع <:imagesremovebgpreview:1086073447840485527> الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو <:imagesremovebgpreview:1086073447840485527>\nفي حال عدم وجود استفسارات أخرى يرجى إغلاق التكت وتقييم مستوى الخدمة ؛\nشاكرين ومقدرين لكم , دمتم بخير .", "ticket_انعاش": "عزيزي المستفيد: <:imagesremovebgpreview:1086073447840485527>\nنود تنبيهك بأن طلب الانعاش مخالفة منصوص عليها من قبل ادارة الرقابة والتفتيش <:imagesremovebgpreview:1086073447840485527>", "ticket_شكوى": "نشكر لكم تواصلكم وإهتمامكم , ولتسريع عملية معالجة الشكوى نرجوا توفير ما يلي :\n\n- اسم المسعف بشكل واضح .\n- تصوير واضح لا يقل عن 10 دقائق , منها 5 قبل وقوع الحادثة و 5 أثناء وبعد حدوث الحادثة , دون قص اللقطات .\n- الإلتزام بإرفاق إثبات الشكوى داخل تكت الشكوى , أو في حال تعذر ذلك رفعه على موقع : \nhttps://streamable.com/\nحسب التوصيات من إدارة الرقابة والتفتيش .\n\n***عدم إلتزامك بأي بند من البنود المذكورة أعلاه يلغي شكواك .***", "ticket_قياديتسجيل": "تم تسجيل الإذن بنجاح <:jobcenter:1152025666154418186> \n\nنتمنى لكم التوفيق، وفي حال العودة للوظيفة يرجى فتح تذكرة لدى الشؤون الإدارية\n \nو إرفاق صورة من الهوية ليتم تسجيل عودتكم.\n\nشكرًا لتواصلكم مع الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو <:Group_8:1388328849053450270> <:emoji_85:1392053576561463318> \n\nفي حال عدم وجود استفسارات أخرى، يرجى إغلاق التذكرة.\n\nشاكرين ومقدرين لكم، دمتم بخير <:emoji_85:1392053576561463318>", "ticket_قياديعودة": "تم تسجيل عودتكم بنجاح، ويمكنك الآن المباشرة <:jobcenter:1152025666154418186> \n\nشكرًا لتواصلكم مع الشؤون الإدارية لقطاع الهلال الأحمر - مقاطعة بوليتو <:Group_8:1388328849053450270> <:emoji_85:1392053576561463318> \n\nفي حال عدم وجود استفسارات أخرى، يرجى إغلاق التذكرة.\n\nشاكرين ومقدرين لكم، دمتم بخير <:emoji_85:1392053576561463318>"}, "sectors": ["شرطة بوليتو", "ادارة الشيرف", "ادارة الطرق", "شرطة لوس", "كراج الميكانيكي"], "customForms": [], "revision": "leadership-2026-10-05"};
+const FORMULA_LABELS = {"roleRequest": "طلب الرولات", "internalDecision": "قرار الإجازة الداخلية", "financialPull": "رسالة السحب المالية", "termination": "قرار إنهاء الخدمات", "resignationDecision": "قرار الاستقالة", "externalEnd": "قرار انتهاء الإجازة الخارجية", "externalNew": "قرار الإجازة الخارجية", "externalExtend": "قرار تمديد الإجازة الخارجية", "assignmentNew": "قرار الانتداب", "assignmentEnd": "قرار انتهاء الانتداب", "ticket_داخلية": "صيغة الإجازة الداخلية", "ticket_intNotMet": "صيغة رفض الإجازة الداخلية", "ticket_خارجية": "صيغة الإجازة الخارجية", "ticket_عودةداخلية": "صيغة العودة من إجازة داخلية", "ticket_عودةخارجية": "صيغة العودة من إجازة خارجية", "ticket_غيرمستوفين": "صيغة الإجازة الداخلية لغير المستوفين", "ticket_قبولاستقالة": "صيغة قبول الإستقالة", "ticket_سفلة": "صيغة الإستقالة للمتدرب", "ticket_رفض": "صيغة الإستقالة لمستوى 1", "ticket_اهمال": "صيغة إهمال التكت", "ticket_ازالة": "صيغة إزالة منع التوظيف", "ticket_انتداب": "صيغة قبول الإنتداب", "ticket_موادع": "صيغة الموادع", "ticket_انعاش": "صيغة طلب الانعاش", "ticket_شكوى": "صيغة استلام الشكوى", "ticket_قياديتسجيل": "تسجيل الاذن القيادي", "ticket_قياديعودة": "العوده بعد اخد اذن قيادي"};
+let editingCustomId=null;
+let builderFields=[];
+const FIELD_TYPES={text:'نص',mention:'منشن شخص',days:'عدد أيام',hours:'عدد ساعات',number:'رقم',date:'تاريخ',select:'قائمة اختيارات'};
+function validateCustomForms(forms){
+ if(!Array.isArray(forms)||forms.length>50)throw Error('عدد الصيغ الجديدة غير صالح');
+ const ids=new Set();
+ return forms.map(form=>{
+ if(!form||typeof form.id!=='string'||!/^custom_[a-z0-9_]+$/.test(form.id)||ids.has(form.id)||typeof form.name!=='string'||!form.name.trim()||form.name.length>100||typeof form.body!=='string'||form.body.length>100000||!Array.isArray(form.fields)||form.fields.length>30)throw Error('بيانات صيغة جديدة غير صالحة');ids.add(form.id);
+ const fieldIds=new Set(),labels=new Set();
+ const fields=form.fields.map(f=>{if(!f||!/^f\d+$/.test(f.id)||fieldIds.has(f.id)||typeof f.label!=='string'||!f.label.trim()||f.label.length>100||/[{}]/.test(f.label)||labels.has(f.label.trim())||!Object.hasOwn(FIELD_TYPES,f.type)||!Array.isArray(f.options)||f.options.length>100||f.options.some(o=>typeof o!=='string'||!o.trim()||o.length>120)||f.type==='select'&&!f.options.length)throw Error('حقول الصيغة غير صالحة');fieldIds.add(f.id);labels.add(f.label.trim());return {id:f.id,label:f.label.trim(),type:f.type,options:[...new Set(f.options.map(x=>x.trim()))],required:f.required!==false};});
+ return {id:form.id,name:form.name.trim(),body:form.body,fields};
+ });
+}
+function newBuilderField(){return {id:'f'+(Math.max(0,...builderFields.map(f=>Number(f.id.slice(1))))+1),label:'',type:'text',options:[],required:true};}
+function collectBuilderFields(){
+ const rows=document.getElementById('builderFields').children;
+ builderFields=Array.from(rows).map(row=>({id:row.dataset.fieldId,label:row.querySelector('.field-name').value.trim(),type:row.querySelector('.field-type').value,options:row.querySelector('.field-options').value.split('\n').map(x=>x.trim()).filter(Boolean),required:row.querySelector('.field-required').checked}));
+}
+function insertBuilderToken(token){const field=document.getElementById('builderBody');field.setRangeText(token,field.selectionStart,field.selectionEnd,'end');field.focus();}
+function refreshBuilderTokens(){collectBuilderFields();const wrap=document.getElementById('builderTokens');wrap.replaceChildren();for(const f of builderFields.filter(f=>f.label)){const b=document.createElement('button');b.type='button';b.textContent=f.label;b.onclick=()=>insertBuilderToken('{{'+f.label+'}}');wrap.append(b);}const b=document.createElement('button');b.type='button';b.textContent='التوقيع';b.onclick=()=>insertBuilderToken('{{التوقيع}}');wrap.append(b);}
+function renderBuilderFields(){
+ const wrap=document.getElementById('builderFields');wrap.replaceChildren();
+ for(const f of builderFields){const row=document.createElement('div');row.className='builder-field';row.dataset.fieldId=f.id;
+ const label=document.createElement('label');label.textContent='اسم الحقل';const name=document.createElement('input');name.className='field-name';name.value=f.label;name.maxLength=100;name.placeholder='مثال: القطاع أو مدة الإجازة';name.oninput=refreshBuilderTokens;label.append(name);
+ const typeLabel=document.createElement('label');typeLabel.textContent='نوع الحقل';const type=document.createElement('select');type.className='field-type';for(const [value,text]of Object.entries(FIELD_TYPES)){const o=document.createElement('option');o.value=value;o.textContent=text;type.append(o);}type.value=f.type;typeLabel.append(type);
+ const optionsLabel=document.createElement('label');optionsLabel.textContent='الاختيارات — كل اختيار في سطر';optionsLabel.hidden=f.type!=='select';const options=document.createElement('textarea');options.className='field-options';options.rows=3;options.placeholder='شرطة بوليتو\nامن الطرق\nكراج الميكانيكي';options.value=f.options.join('\n');optionsLabel.append(options);
+ type.onchange=()=>{optionsLabel.hidden=type.value!=='select';refreshBuilderTokens();};
+ const requiredLabel=document.createElement('label');requiredLabel.className='check-label';const required=document.createElement('input');required.type='checkbox';required.className='field-required';required.checked=f.required;requiredLabel.append(required,document.createTextNode('حقل مطلوب'));
+ const remove=document.createElement('button');remove.type='button';remove.className='sector-remove';remove.textContent='حذف الحقل';remove.onclick=()=>{collectBuilderFields();builderFields=builderFields.filter(x=>x.id!==f.id);renderBuilderFields();};row.append(label,typeLabel,optionsLabel,requiredLabel,remove);wrap.append(row);}
+ refreshBuilderTokens();
+}
+function openCustomBuilder(id=null){
+ captureSettingsDraft();editingCustomId=id;const form=draftSettings.customForms.find(x=>x.id===id);
+ document.getElementById('builderName').value=form?.name||'';document.getElementById('builderBody').value=form?.body||'';builderFields=form?cloneSettings(form.fields):[{id:'f1',label:'المسعف',type:'mention',options:[],required:true}];document.getElementById('customEditor').hidden=false;document.getElementById('builderStatus').textContent='';document.getElementById('builderTitle').textContent=form?'تعديل الصيغة':'صيغة جديدة';renderBuilderFields();document.getElementById('builderName').focus();
+}
+function renderCustomList(){const list=document.getElementById('customList');list.replaceChildren();if(!draftSettings.customForms.length){const note=document.createElement('p');note.className='settings-note';note.textContent='ما عندك صيغ إضافية بعد. اضغط إضافة صيغة جديدة.';list.append(note);}for(const form of draftSettings.customForms){const row=document.createElement('div');row.className='custom-list-row';const name=document.createElement('strong');name.textContent=form.name;const edit=document.createElement('button');edit.type='button';edit.className='paste-button';edit.textContent='تعديل';edit.onclick=()=>openCustomBuilder(form.id);const remove=document.createElement('button');remove.type='button';remove.className='sector-remove';remove.textContent='حذف';remove.onclick=()=>{if(!confirm('حذف صيغة '+form.name+'؟'))return;captureSettingsDraft();draftSettings.customForms=draftSettings.customForms.filter(x=>x.id!==form.id);if(editingCustomId===form.id){document.getElementById('customEditor').hidden=true;editingCustomId=null;}persistFormulaSettings();};row.append(name,edit,remove);list.append(row);}}
+function saveCustomBuilder(){
+ try{collectBuilderFields();const name=document.getElementById('builderName').value.trim();const body=document.getElementById('builderBody').value;if(!name)throw Error('اكتب اسم الصيغة');if(builderFields.some(f=>!f.label))throw Error('اكتب اسم لكل حقل');if(builderFields.some(f=>f.type==='select'&&!f.options.length))throw Error('اكتب خيارات القائمة، كل اختيار في سطر');if(!body.trim())throw Error('اكتب نص الصيغة');const form={id:editingCustomId||'custom_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7),name,body,fields:builderFields};const checked=validateCustomForms([form])[0];const available=new Set(['التوقيع',...checked.fields.map(f=>f.label)]);for(const token of body.matchAll(/\{\{([^{}]+)\}\}/g))if(!available.has(token[1]))throw Error('الحقل «'+token[1]+'» غير موجود. أضفه أو عدّل النص.');captureSettingsDraft();const next=draftSettings.customForms.filter(x=>x.id!==checked.id);next.push(checked);draftSettings.customForms=validateCustomForms(next);if(!persistFormulaSettings())return;document.getElementById('customEditor').hidden=true;editingCustomId=null;document.getElementById('builderStatus').textContent='';document.getElementById('settingsStatus').textContent='تم حفظ الصيغة. افتح النماذج واختر '+name+'.';}
+ catch(e){document.getElementById('builderStatus').textContent=e.message;}
+}
+function syncCustomForms(){
+ const host=document.getElementById('customFormHost');host.replaceChildren();document.querySelectorAll('[data-custom-menu]').forEach(e=>e.remove());const select=document.getElementById('mobileSection');Array.from(select.options).filter(x=>x.value.startsWith('custom_')).forEach(x=>x.remove());
+ for(const form of formulaSettings.customForms){const section=document.createElement('div');section.id=form.id;section.className='form-section';const h=document.createElement('h3');h.textContent=form.name;const card=document.createElement('div');card.className='form-card';
+ for(const field of form.fields){const label=document.createElement('label');label.textContent=field.label;label.htmlFor=form.id+'_'+field.id;const input=document.createElement(field.type==='select'?'select':'input');input.id=label.htmlFor;input.required=field.required;
+ if(field.type==='select'){const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='-- اختر --';input.append(placeholder);for(const value of field.options){const option=document.createElement('option');option.value=value;option.textContent=value;input.append(option);}}
+ else{input.type=field.type==='date'?'date':'text';if(['days','hours','number'].includes(field.type)){input.inputMode='numeric';input.pattern='[0-9]*';input.placeholder=field.type==='days'?'عدد الأيام':field.type==='hours'?'عدد الساعات':'أدخل الرقم';}else input.placeholder='أدخل '+field.label;}
+ card.append(label);if(field.type==='mention'){const wrap=document.createElement('div');wrap.className='paste-field';const paste=document.createElement('button');paste.type='button';paste.className='paste-button';paste.textContent='لصق';paste.onclick=()=>pasteMedic(input.id,paste);wrap.append(input,paste);card.append(wrap);}else card.append(input);}
+ const generate=document.createElement('button');generate.type='button';generate.className='generate';generate.textContent='إنشاء الصيغة';generate.onclick=()=>generateCustomForm(form.id);const result=document.createElement('div');result.className='decision-card';const title=document.createElement('div');title.className='decision-title';title.textContent='معاينة الصيغة';const output=document.createElement('pre');output.id=form.id+'_output';const copy=document.createElement('button');copy.className='generate copy-btn';copy.type='button';copy.textContent='نسخ الصيغة';copy.onclick=async()=>{try{if(!output.textContent.trim())throw Error('أنشئ الصيغة أولاً');await navigator.clipboard.writeText(output.textContent);pasteNotice('تم النسخ');}catch(e){pasteNotice(e.message||'تعذر النسخ');}};result.append(title,output);const actions=document.createElement('div');actions.className='action-row';actions.append(generate,copy);card.append(actions);section.append(h,card,result);host.append(section);
+ const option=document.createElement('option');option.value=form.id;option.textContent=form.name;select.append(option);const item=document.createElement('button');item.type='button';item.dataset.section=form.id;item.dataset.customMenu='true';item.textContent=form.name;item.onclick=()=>chooseForm(form.id);document.querySelector('.menu-options').append(item);}
+ const current=document.getElementById('mobileSection').value;if(!current)document.getElementById('mobileSection').value='internalLeave';
+}
+function renderCustomText(form,values){const signature=formulaSettings.signature.replace(/\{\{(\w+)\}\}/g,(t,k)=>Object.hasOwn(formulaSettings.mentions,k)?formulaSettings.mentions[k]:t);return form.body.replace(/\{\{([^{}]+)\}\}/g,(token,key)=>key==='التوقيع'?signature:Object.hasOwn(values,key)?String(values[key]):token);}
+function generateCustomForm(id){const form=formulaSettings.customForms.find(x=>x.id===id);const output=document.getElementById(id+'_output');output.textContent='';const values=Object.create(null);for(const field of form.fields){const input=document.getElementById(id+'_'+field.id);let value=input.value.trim();if(field.required&&!value){input.focus();pasteNotice('أدخل '+field.label);return;}if(value&&['number','hours','days'].includes(field.type)){value=value.replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))).replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));if(!/^\d+$/.test(value)){input.focus();pasteNotice('اكتب أرقام فقط في '+field.label);return;}}if(field.type==='mention')value=normalizeCopyId(value);values[field.label]=value;}output.textContent=renderCustomText(form,values);}
+
+const SETTINGS_KEY = 'redCrescent.formulaSettings.v1';
+const cloneSettings = value => JSON.parse(JSON.stringify(value));
+function validateSettings(value) {
+ if (!value || typeof value !== 'object' || typeof value.signature !== 'string' || !value.mentions || !value.templates) throw new Error('ملف إعدادات غير صالح');
+ const result = cloneSettings(FORMULA_DEFAULTS);
+ if(value.customForms!==undefined)result.customForms=validateCustomForms(value.customForms);
+ for (const group of ['mentions','templates']) for (const key of Object.keys(result[group])) {
+  if(group==='templates' && value[group][key]===undefined)continue;
+  if (typeof value[group][key] !== 'string' || value[group][key].length > 100000) throw new Error('ملف إعدادات غير مكتمل');
+  result[group][key] = value[group][key];
+ }
+ result.signature=value.signature;
+ if(value.sectors!==undefined){if(!Array.isArray(value.sectors)||value.sectors.length>100||value.sectors.some(x=>typeof x!=='string'||!x.trim()||x.length>120))throw new Error('قائمة القطاعات غير صالحة');result.sectors=[...new Set(value.sectors.map(x=>x.trim()))];}
+ if(value.signature.length>100000) throw new Error('التوقيع طويل جداً');
+ if(value.revision!==FORMULA_DEFAULTS.revision){
+ result.mentions.leader=FORMULA_DEFAULTS.mentions.leader;result.mentions.deputy=FORMULA_DEFAULTS.mentions.deputy;
+ result.sectors=result.sectors.map(name=>name.replace('امن الطرق','ادارة الطرق').replace('ادارة الشرطة','ادارة الشيرف'));
+ const people={'<@725655707764129813>':'<@813079786855464961>','<@813079786855464961>':'<@1162195276514197527>'};
+ const updateText=text=>text.replace(/<@(?:725655707764129813|813079786855464961)>/g,token=>people[token]);
+ result.signature=updateText(result.signature);for(const key of Object.keys(result.templates))result.templates[key]=updateText(result.templates[key]);
+ }
+ return result;
+}
+let formulaSettings = cloneSettings(FORMULA_DEFAULTS);
+let initialSettingsMessage = '';
+try {
+ const embedded = JSON.parse(document.getElementById('embeddedFormulaSettings').textContent);
+ if(embedded) formulaSettings = validateSettings(embedded);
+} catch {initialSettingsMessage = 'تعذر تحميل الإعدادات المضمنة؛ تم استخدام الصيغ الأصلية.';}
+const baseSettings = cloneSettings(formulaSettings);
+try {
+ const saved = localStorage.getItem(SETTINGS_KEY);
+ if(saved) formulaSettings = validateSettings(JSON.parse(saved));
+} catch {initialSettingsMessage = 'تعذر تحميل إعدادات المتصفح. يمكنك حفظ الإعدادات أو تنزيل نسخة من الموقع.';}
+let draftSettings = cloneSettings(formulaSettings);
+let selectedFormula = Object.keys(FORMULA_LABELS)[0];
+function renderConfigured(key, values = {}, settings = formulaSettings) {
+ const signature = settings.signature.replace(/\{\{(\w+)\}\}/g, (token,k) => Object.hasOwn(settings.mentions,k) ? settings.mentions[k] : token);
+ const replacements = {...settings.mentions, signature, ...values};
+ return settings.templates[key].replace(/\{\{(\w+)\}\}/g, (token,k) => Object.hasOwn(replacements,k) ? String(replacements[k]) : token);
+}
+
+function appendSectorRow(name){
+ const row=document.createElement('div');row.className='sector-row';const field=document.createElement('input');field.type='text';field.maxLength=120;field.value=name;field.placeholder='اسم القطاع';field.setAttribute('aria-label','اسم القطاع');const remove=document.createElement('button');remove.type='button';remove.className='sector-remove';remove.textContent='حذف';remove.setAttribute('aria-label','حذف القطاع');remove.onclick=()=>{row.remove();captureSettingsDraft();document.getElementById('sectorNotice').textContent='تم حذف القطاع من المحرر. اضغط حفظ لتطبيقه.';};row.append(field,remove);document.getElementById('sectorRows').append(row);
+}
+function renderSectorEditor(){document.getElementById('sectorRows').replaceChildren();draftSettings.sectors.forEach(appendSectorRow);}
+function syncAssignmentSectors(){
+ const select=document.getElementById('ass_sector');const previous=select.value;select.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='-- اختر القطاع --';select.append(placeholder);for(const name of formulaSettings.sectors){const option=document.createElement('option');option.value=name;option.textContent=name;select.append(option);}select.value=formulaSettings.sectors.includes(previous)?previous:'';
+}
+
+function captureSettingsDraft() {
+ draftSettings.templates[selectedFormula] = document.getElementById('settingsText').value;
+ draftSettings.signature = document.getElementById('settingsSignature').value;
+ draftSettings.sectors=Array.from(document.getElementById('sectorRows').querySelectorAll('input')).map(field=>field.value.trim()).filter(Boolean);
+ for(const key of Object.keys(FORMULA_DEFAULTS.mentions)) draftSettings.mentions[key] = document.getElementById('mention_'+key).value;
+}
+function switchSettingsPane(name){
+ for(const key of ['signature','text','sectors','custom']){const active=key===name;document.getElementById(key+'Pane').hidden=!active;const button=document.getElementById(key+'Tab');button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active));}
+ document.getElementById('saveSettings').hidden=name==='custom';
+}
+function updateSettingsPreview() {
+ captureSettingsDraft();
+ document.getElementById('signaturePreview').textContent=draftSettings.signature.replace(/\{\{(\w+)\}\}/g,(token,key)=>Object.hasOwn(draftSettings.mentions,key)?draftSettings.mentions[key]:token);
+ document.getElementById('settingsPreview').textContent = renderConfigured(selectedFormula,{user:'<@123456789012345678>',type:'اضافه رول اجازة وظيفيه',duration:3,remaining:17,start:'8:00 م | 2026/10/04',end:'11:00 م | 2026/10/04',nameCode:'اسم المسعف | 123',days:5,fine:'500,000',reason:'استقالة بمستوى 1',violations:'لا',amount:'500,000',sector:'القطاع الثانوي',year:2026,month:10,day:9},draftSettings);
+}
+function loadSettingsEditor() {
+ renderSectorEditor();renderCustomList();
+ document.getElementById('settingsText').value = draftSettings.templates[selectedFormula];
+ document.getElementById('settingsSignature').value = draftSettings.signature;
+ for(const key of Object.keys(FORMULA_DEFAULTS.mentions)) document.getElementById('mention_'+key).value = draftSettings.mentions[key];
+ const tokens = document.getElementById('settingsTokens'); tokens.replaceChildren();
+ const keys = new Set([...draftSettings.templates[selectedFormula].matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1]));
+ for(const key of Object.keys(FORMULA_DEFAULTS.mentions)) keys.add(key); keys.add('signature');
+ for(const key of keys){ const button=document.createElement('button'); button.type='button';button.textContent=({user:'المسعف',duration:'المدة',remaining:'الرصيد المتبقي',start:'البداية',end:'النهاية',days:'عدد الأيام',sector:'القطاع',signature:'التوقيع',issuer:'الجهة المصدرة',nameCode:'الاسم والكود',type:'نوع الطلب',amount:'المبلغ',fine:'الغرامة',reason:'السبب',violations:'المخالفات',leader:'القائد',deputy:'النائب',leaderRole:'رتبة القائد',deputyRole:'رتبة النائب',rolesAdmin:'مسؤول الرولات',rolesTeam:'فريق الرولات',year:'السنة',month:'الشهر',day:'اليوم'})[key]||key;button.onclick=()=>{const field=document.getElementById('settingsText');field.setRangeText('{{'+key+'}}',field.selectionStart,field.selectionEnd,'end');field.focus();updateSettingsPreview();};tokens.append(button); }
+ updateSettingsPreview();
+}
+function persistFormulaSettings(){
+ captureSettingsDraft();
+ if(!draftSettings.sectors.length){document.getElementById('settingsStatus').textContent='أضف قطاع واحد على الأقل قبل الحفظ.';switchSettingsPane('sectors');return false;}
+ if(draftSettings.sectors.length>100||draftSettings.sectors.some(x=>x.length>120)){document.getElementById('settingsStatus').textContent='الحد الأقصى 100 قطاع، و120 حرف للاسم.';switchSettingsPane('sectors');return false;}
+ draftSettings.sectors=[...new Set(draftSettings.sectors)];formulaSettings=cloneSettings(draftSettings);syncAssignmentSectors();renderSectorEditor();syncCustomForms();renderCustomList();
+ let message='تم تطبيق الإعدادات وحفظها على هذا المتصفح. أعد إنشاء القرارات السابقة لتحديثها.';
+ try {localStorage.setItem(SETTINGS_KEY,JSON.stringify(formulaSettings));}catch{message='تم تطبيق الإعدادات لهذه الجلسة فقط. تعذر الحفظ الدائم؛ نزّل ملف الموقع أو صدّر الإعدادات.';}
+ document.getElementById('settingsStatus').textContent=message;
+ showTemplate();
+ for(const id of ['int_output','res_output','res_pull_output','res_role_output','ext_output','ext_role_output','ass_output','role_output']) document.getElementById(id).textContent='';
+ return true;
+}
+function downloadSettingsFile(name, data, type){
+ const url=URL.createObjectURL(new Blob([data],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function initializeFormulaSettings(){
+ syncAssignmentSectors();syncCustomForms();
+ document.getElementById('addSector').onclick=()=>{captureSettingsDraft();if(draftSettings.sectors.length>=100){document.getElementById('sectorNotice').textContent='الحد الأقصى 100 قطاع';return;}appendSectorRow('');document.getElementById('sectorRows').querySelector('div:last-child input').focus();};
+ const labels={issuer:'منشن الجهة المصدرة (رول)',leaderRole:'منشن رتبة القائد',leader:'منشن القائد (شخص)',deputyRole:'منشن رتبة النائب',deputy:'منشن النائب (شخص)',rolesAdmin:'منشن مسؤول الرولات',rolesTeam:'منشن فريق الرولات'};
+ for(const [key,label] of Object.entries(labels)){const wrap=document.createElement('label');wrap.textContent=label;const field=document.createElement('input');field.id='mention_'+key;field.type='text';field.dir='ltr';field.placeholder='<@123…> أو <@&123…>';field.addEventListener('input',updateSettingsPreview);wrap.append(field);document.getElementById('mentionFields').append(wrap);}
+ const select=document.getElementById('settingsTemplate');
+ for(const [key,label] of Object.entries(FORMULA_LABELS)){const option=document.createElement('option');option.value=key;option.textContent=label;select.append(option);}
+ select.onchange=()=>{captureSettingsDraft();selectedFormula=select.value;loadSettingsEditor();};
+ document.getElementById('settingsText').oninput=updateSettingsPreview;document.getElementById('settingsSignature').oninput=updateSettingsPreview;
+ document.getElementById('saveSettings').onclick=persistFormulaSettings;
+ document.getElementById('resetTemplate').onclick=()=>{if(confirm('استعادة النص الأصلي لهذه الصيغة؟')){draftSettings.templates[selectedFormula]=baseSettings.templates[selectedFormula];loadSettingsEditor();document.getElementById('settingsStatus').textContent='تمت الاستعادة في المحرر. اضغط حفظ الإعدادات لتطبيقها.';}};
+ document.getElementById('resetSettings').onclick=()=>{if(confirm('استعادة جميع الصيغ والمنشنات والتوقيع؟')){draftSettings=cloneSettings(baseSettings);loadSettingsEditor();persistFormulaSettings();}};
+ document.getElementById('exportSettings').onclick=()=>{captureSettingsDraft();downloadSettingsFile('formula-settings.json',JSON.stringify(draftSettings,null,2),'application/json');};
+ document.getElementById('importSettings').onclick=()=>document.getElementById('settingsFile').click();
+ document.getElementById('settingsFile').onchange=async event=>{const file=event.target.files[0];if(!file)return;try{if(file.size>4000000)throw new Error('الملف أكبر من الحد المسموح');const imported=validateSettings(JSON.parse(await file.text()));draftSettings=imported;loadSettingsEditor();document.getElementById('settingsStatus').textContent='تم استيراد الإعدادات. راجع المعاينة واضغط حفظ لتطبيقها.';}catch(error){document.getElementById('settingsStatus').textContent='تعذر الاستيراد: '+error.message;}finally{event.target.value='';}};
+ document.getElementById('downloadSite').onclick=()=>{
+ captureSettingsDraft();const page=document.documentElement.cloneNode(true);page.querySelector('#customFormHost').replaceChildren();page.querySelectorAll('[data-custom-menu]').forEach(e=>e.remove());page.querySelector('#customList').replaceChildren();page.querySelector('#builderFields').replaceChildren();page.querySelector('#builderTokens').replaceChildren();page.querySelector('#builderName').value='';page.querySelector('#builderName').removeAttribute('value');page.querySelector('#builderBody').textContent='';page.querySelector('#builderStatus').textContent='';page.querySelector('#customEditor').hidden=true;page.querySelector('#customPane').hidden=true;page.querySelector('#customTab').classList.remove('active');page.querySelector('#customTab').setAttribute('aria-selected','false');page.querySelector('#saveSettings').hidden=false;page.querySelector('#navSettings').hidden=true;page.querySelector('#formsMenu').removeAttribute('open');page.querySelector('#pasteStatus').hidden=true;page.querySelector('#pasteStatus').textContent='';
+ page.querySelector('#embeddedFormulaSettings').textContent=JSON.stringify(draftSettings).replace(/</g,'\\u003c');
+ page.querySelector('#mentionFields').replaceChildren();page.querySelector('#settingsTemplate').replaceChildren();page.querySelector('#settingsTokens').replaceChildren();page.querySelector('#sectorRows').replaceChildren();page.querySelector('#sectorNotice').textContent='';page.querySelector('#sectorsPane').hidden=true;page.querySelector('#sectorsTab').classList.remove('active');page.querySelector('#sectorsTab').setAttribute('aria-selected','false');
+ for(const field of page.querySelectorAll('input'))field.removeAttribute('value');
+ for(const id of ['settingsText','settingsSignature','settingsPreview','signaturePreview','settingsStatus','int_output','res_output','res_pull_output','res_role_output','ext_output','ext_role_output','ass_output','role_output','templateBox'])page.querySelector('#'+id).textContent='';
+ for(const section of page.querySelectorAll('.form-section'))section.style.display=section.id==='internalLeave'?'block':'none';
+ page.querySelector('#sectionPicker').hidden=false;
+ page.querySelector('#signaturePane').hidden=false;page.querySelector('#textPane').hidden=true;
+ page.querySelector('#signatureTab').classList.add('active');page.querySelector('#signatureTab').setAttribute('aria-selected','true');page.querySelector('#textTab').classList.remove('active');page.querySelector('#textTab').setAttribute('aria-selected','false');
+ for(const id of ['navForms','navTickets','navSettings']){const button=page.querySelector('#'+id);button.classList.toggle('active',id==='navForms');button.removeAttribute('aria-current');}
+ for(const option of page.querySelectorAll('option'))option.removeAttribute('selected');
+ downloadSettingsFile('index.html','<!DOCTYPE html>\n'+page.outerHTML,'text/html;charset=utf-8');
+ document.getElementById('settingsStatus').textContent='تم تنزيل index.html بإعداداتك. ارفعه إلى GitHub لتطبيق الصيغ لجميع المستخدمين.';
+ };
+ loadSettingsEditor();document.getElementById('settingsStatus').textContent=initialSettingsMessage;
+}
+
+// Tab function
+
+let pasteNoticeTimer;
+function pasteNotice(message){const status=document.getElementById('pasteStatus');status.textContent=message;status.hidden=false;clearTimeout(pasteNoticeTimer);pasteNoticeTimer=setTimeout(()=>{status.hidden=true;},5000);}
+async function pasteMedic(id,button){
+ const field=document.getElementById(id);button.disabled=true;
+ try{if(!navigator.clipboard?.readText)throw new Error('Clipboard unavailable');const text=await navigator.clipboard.readText();if(!text.trim()){pasteNotice('الحافظة فارغة');return;}field.value=text.trim();field.dispatchEvent(new Event('input',{bubbles:true}));pasteNotice('تم اللصق');}
+ catch{field.focus();pasteNotice('تعذر الوصول للحافظة. اضغط مطولاً داخل الحقل واختر لصق.');}
+ finally{button.disabled=false;}
+}
+function openFormsMenu(){const menu=document.getElementById('formsMenu');const current=document.getElementById('mobileSection').value;menu.querySelectorAll('[data-section]').forEach(button=>{const active=button.dataset.section===current;button.classList.toggle('current',active);button.setAttribute('aria-pressed',String(active));});if(!menu.open)menu.showModal();}
+function closeFormsMenu(){document.getElementById('formsMenu').close();}
+function chooseForm(id){closeFormsMenu();showForm(id);}
+
+function showForm(id){
+ const isForm = !['ticketTemplates','formulaSettings'].includes(id);
+ document.getElementById('sectionPicker').hidden = !isForm;
+ if(isForm) document.getElementById('mobileSection').value = id;
+ for(const [key,active] of Object.entries({navForms:isForm,navTickets:id==='ticketTemplates',navSettings:id==='formulaSettings'})) {
+ const button=document.getElementById(key);button.classList.toggle('active',active);if(active)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
+ }
+ window.scrollTo({top:0,behavior:'instant'});
+
+  document.querySelectorAll('.form-section').forEach(f => f.style.display='none');
+  document.getElementById(id).style.display='block';
+
+  const quickPanel = document.getElementById('quickPanel');
+  
+  if (id === 'internalLeave') {
+    showQuickTemplates('internalLeave');
+  } else if (id === 'resignation') {
+    showQuickTemplates('resignation', { level: document.getElementById('res_level')?.value });
+  } else if (id === 'externalLeave') {
+    showQuickTemplates('externalLeave', { type: document.getElementById('ext_leaveType')?.value });
+  } else if (id === 'assignment') {
+    showQuickTemplates('assignment');
+  } else {
+    hideQuickPanel();
+  }
+}
+
+function generateRoleRequestBox(copyId, type = 'يرجى اختيار رول مناسب من القائمة'){
+    const request = renderConfigured("roleRequest", {user: (copyId), type: (type)});
+    return request;
+}
+
+function normalizeCopyId(copyId) {
+    let id = copyId.trim();
+    if (id && !id.startsWith("<@")) {
+        id = `<@${id}>`;
+    }
+    return id;
+}
+
+function generateInternalLeave(){
+  let copyUser = document.getElementById("int_copyUser").value.trim();
+  let duration = parseFloat(document.getElementById("int_vac_duration").value) || 0;
+  let balance  = parseFloat(document.getElementById("int_vac_balance").value) || 0;
+  const normalizedCopyUser = normalizeCopyId(copyUser);
+  const tzNow = new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Riyadh"}));
+  const startDate = new Date(tzNow.getTime() + 5 * 60 * 1000); 
+  const endDate   = new Date(startDate.getTime() + duration * 60 * 60 * 1000);
+
+  function formatDate(date){
+    const y = date.getFullYear();
+    const m = String(date.getMonth()+1).padStart(2,'0');
+    const d = String(date.getDate()).padStart(2,'0');
+    let h   = date.getHours();
+    const min = String(date.getMinutes()).padStart(2,'0');
+    const per = h >= 12 ? "م" : "ص";
+    h = h % 12; h = h ? h : 12;
+    return `${h}:${min} ${per} | ${y}/${m}/${d}`;
+  }
+
+  const remaining = balance - duration;
+  const result= renderConfigured("internalDecision", {user: (normalizedCopyUser), duration: (duration), start: (formatDate(startDate)), end: (formatDate(endDate)), remaining: (remaining)});
+  document.getElementById("int_output").textContent=result;
+  document.getElementById('int_role_output').style.display = 'none';
+  document.getElementById('int_role_label').style.display = 'none';
+  document.getElementById('copyIntRoleBtn').style.display = 'none';
+  showQuickTemplates('internalLeave');
+}
+
+function copyInternalLeave(){
+  navigator.clipboard.writeText(document.getElementById("int_output").textContent);
+  alert("✅ تم نسخ القرار بنجاح!");
+}
+
+function copyInternalRole(){
+  const textToCopy = document.getElementById('int_role_output').textContent;
+  if (!textToCopy.trim()) { alert("⚠️ لا يوجد نص لنسخه."); return; }
+  navigator.clipboard.writeText(textToCopy);
+  alert("✅ تم نسخ طلب الرول بنجاح!");
+}
+
+function updateResFields(){
+  const level = document.getElementById('res_level')?.value;
+  if(level){ showQuickTemplates('resignation', { level }); } else { hideQuickPanel(); }
+}
+
+function generateResignation(){
+  const level=document.getElementById('res_level')?.value;
+  const nameCode=document.getElementById('res_nameCode').value.trim();
+  let copyId=document.getElementById('res_copyId').value.trim();
+  const hasViolations=document.getElementById('res_hasViolations')?.value;
+  const normalizedCopyId = normalizeCopyId(copyId);
+  let pullOutputBox = document.getElementById('res_pull_output');
+  let pullBoxDiv = document.getElementById('res_pull_box');
+  let roleOutputBox = document.getElementById('res_role_output');
+  let roleBoxDiv = document.getElementById('res_role_box');
+
+  pullBoxDiv.style.display = 'none';
+  roleBoxDiv.style.display = 'none';
+
+  if(!level) return alert('⚠️ الرجاء اختيار مستوى المسعف');
+  if(!nameCode) return alert('⚠️ الرجاء إدخال اسمه وكوده الميداني');
+  if(!copyId) return alert('⚠️ الرجاء إدخال الكوبي ايدي');
+  let result='';
+  
+  if(level==='متدرب'||level==='مستوى 1'){
+    let days=level==='متدرب'?14:7;
+    let fine=level==='متدرب'?'1,000,000':'500,000';
+    let amount = level === 'متدرب' ? '1,000,000' : '500,000';
+    let type   = level === 'متدرب' ? 'استقاله متدرب' : 'استقاله مستوى 1';
+    let pullMessage = renderConfigured("financialPull", {user: (normalizedCopyId), amount: (amount), type: (type)}); 
+    pullOutputBox.textContent = pullMessage;
+    pullBoxDiv.style.display = 'block';
+    let roleType = level==='متدرب' ? 'ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 14 يوم' : 'ازاله رولات الهلال الاحمر + ازاله الاسم + منع التوظيف 7 ايام';
+    roleOutputBox.textContent = generateRoleRequestBox(normalizedCopyId, roleType);
+    roleBoxDiv.style.display = 'block';
+
+    result=renderConfigured("termination", {user: (normalizedCopyId), nameCode: (nameCode), days: (days), fine: (fine), reason: (level==='متدرب'?'استقالة بمستوى متدرب':'استقالة بمستوى 1'), violations: (hasViolations||'لا')});
+    if(!formulaSettings.templates.termination.includes('{{violations}}')) result=result.replace(/(هل يوجد عليه مخالفات سابقه :)[ \t]*/, `$1 ${hasViolations||'لا'}`);
+  } else if(level==='مستوى 2 فما فوق'){
+    roleOutputBox.textContent = generateRoleRequestBox(normalizedCopyId, 'ازاله رولات الهلال الاحمر + ازاله الاسم');
+    roleBoxDiv.style.display = 'block';
+    result=renderConfigured("resignationDecision", {user: (normalizedCopyId), nameCode: (nameCode), violations: (hasViolations||'لا')});
+  }
+  document.getElementById('res_output').textContent=result;
+  showQuickTemplates('resignation', { level: document.getElementById('res_level')?.value });
+}
+
+function copyResignation(){
+  navigator.clipboard.writeText(document.getElementById('res_output').textContent);
+  alert("✅ تم نسخ القرار بنجاح!");
+}
+function copyResignationPull(){
+  navigator.clipboard.writeText(document.getElementById('res_pull_output').textContent);
+  alert("✅ تم نسخ رسالة السحب بنجاح!");
+}
+function copyResignationRole(){
+  navigator.clipboard.writeText(document.getElementById('res_role_output').textContent);
+  alert("✅ تم نسخ طلب الرول بنجاح!");
+}
+
+function updateExtForm(){
+  const type=document.getElementById('ext_leaveType')?.value;
+  document.getElementById('ext_leaveDaysField').style.display = (type==='اجازة خارجية') ? 'block' : 'none';
+  document.getElementById('ext_extensionField').style.display = (type==='تمديد اجازة خارجية') ? 'block' : 'none';
+  document.getElementById('ext_role_output').style.display = 'none';
+  document.getElementById('ext_role_label').style.display = 'none';
+  document.getElementById('copyExtRoleBtn').style.display = 'none';
+  if(type){ showQuickTemplates('externalLeave', { type }); } else { hideQuickPanel(); }
+}
+
+function generateExternalLeave(){
+  const type=document.getElementById('ext_leaveType')?.value;
+  if(!type) return alert('⚠️ الرجاء اختيار نوع الإجازة');
+  let copyUser=document.getElementById("ext_copyUser").value.trim();
+  if(!copyUser) return alert('⚠️ الرجاء إدخال الكوبي ايدي');
+  const normalizedCopyUser = normalizeCopyId(copyUser);
+  let tzDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Riyadh"}));
+  let roleOutputBox = document.getElementById('ext_role_output');
+  let roleLabel = document.getElementById('ext_role_label');
+  let copyRoleBtn = document.getElementById('copyExtRoleBtn');
+  let roleType = '';
+  let shouldShowRoleRequest = true;
+
+  if (type === 'انتهاء اجازة خارجية') {
+    roleType = 'ازاله رول اجازة وظيفيه';
+    document.getElementById('ext_output').textContent=renderConfigured("externalEnd", {user: (normalizedCopyUser)});
+  } else if(type==='اجازة خارجية'){
+    roleType = 'اضافه رول اجازة وظيفيه';
+    const leaveDays=parseInt(document.getElementById('ext_leaveDays').value);
+    if(!leaveDays||leaveDays<=0) return alert('⚠️ الرجاء إدخال مدة الإجازة بالأيام');
+    const endDate=new Date(tzDate);
+    endDate.setDate(endDate.getDate()+leaveDays);
+    const fmt = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+    document.getElementById('ext_output').textContent=renderConfigured("externalNew", {user: (normalizedCopyUser), days: (leaveDays), start: (fmt(tzDate)), end: (fmt(endDate))});
+  } else if(type==='تمديد اجازة خارجية'){
+    shouldShowRoleRequest = false;
+    const extensionDays=parseInt(document.getElementById('ext_extensionDays').value);
+    const prevEndStr=document.getElementById('ext_previousEndDate').value;
+    if(!prevEndStr || !extensionDays) return alert('⚠️ بيانات غير مكتملة');
+    const newEndDate=new Date(prevEndStr);
+    newEndDate.setDate(newEndDate.getDate()+extensionDays);
+    const fmt = (d) => `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`;
+    document.getElementById('ext_output').textContent=renderConfigured("externalExtend", {user: (normalizedCopyUser), days: (extensionDays), end: (fmt(newEndDate))});
+  }
+  if (shouldShowRoleRequest) {
+    roleOutputBox.textContent = generateRoleRequestBox(normalizedCopyUser, roleType);
+    roleOutputBox.style.display = 'block';
+    roleLabel.style.display = 'block';
+    copyRoleBtn.style.display = 'block';
+  }
+}
+
+function copyExternalLeave(){ navigator.clipboard.writeText(document.getElementById('ext_output').textContent); alert("✅ تم النسخ!"); }
+function copyExternalRole(){ navigator.clipboard.writeText(document.getElementById('ext_role_output').textContent); alert("✅ تم النسخ!"); }
+
+function toggleAssFields() {
+  document.getElementById('ass_new_fields').style.display = (document.getElementById('ass_type').value === 'new') ? 'block' : 'none';
+}
+
+function generateAssignment(){
+  let copyId=document.getElementById('ass_copyId').value.trim();
+  const type = document.getElementById('ass_type').value;
+  if(!copyId) return alert("⚠️ الرجاء إدخال الكوبي ايدي");
+  const normalizedCopyId = normalizeCopyId(copyId);
+  if (type === 'new') {
+    let sector=document.getElementById('ass_sector')?.value;
+    let duration=parseInt(document.getElementById('ass_duration').value.trim());
+    let tzDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Riyadh"}));
+    tzDate.setDate(tzDate.getDate()+duration);
+    document.getElementById('ass_output').textContent=renderConfigured("assignmentNew", {user: (normalizedCopyId), sector: (sector), duration: (duration), year: (tzDate.getFullYear()), month: (tzDate.getMonth()+1), day: (tzDate.getDate())});
+  } else {
+    document.getElementById('ass_output').textContent=renderConfigured("assignmentEnd", {user: (normalizedCopyId)});
+  }
+}
+
+function copyAssignment(){ navigator.clipboard.writeText(document.getElementById('ass_output').textContent); alert("✅ تم النسخ!"); }
+
+function generateRoleRequest() {
+  let copyId = document.getElementById("role_copyId").value.trim();
+  const type = document.getElementById("role_type")?.value;
+  if (!copyId || !type) return alert("⚠️ بيانات ناقصة");
+  document.getElementById("role_output").textContent = generateRoleRequestBox(normalizeCopyId(copyId), type);
+}
+
+function copyRoleRequest() { navigator.clipboard.writeText(document.getElementById("role_output").textContent); alert("✅ تم النسخ!"); }
+
+const templates = {};
+Object.defineProperty(templates, "داخلية", {get: () => renderConfigured("ticket_داخلية")});
+Object.defineProperty(templates, "intNotMet", {get: () => renderConfigured("ticket_intNotMet")});
+Object.defineProperty(templates, "خارجية", {get: () => renderConfigured("ticket_خارجية")});
+Object.defineProperty(templates, "عودةداخلية", {get: () => renderConfigured("ticket_عودةداخلية")});
+Object.defineProperty(templates, "عودةخارجية", {get: () => renderConfigured("ticket_عودةخارجية")});
+Object.defineProperty(templates, "غيرمستوفين", {get: () => renderConfigured("ticket_غيرمستوفين")});
+Object.defineProperty(templates, "قبولاستقالة", {get: () => renderConfigured("ticket_قبولاستقالة")});
+Object.defineProperty(templates, "سفلة", {get: () => renderConfigured("ticket_سفلة")});
+Object.defineProperty(templates, "رفض", {get: () => renderConfigured("ticket_رفض")});
+Object.defineProperty(templates, "اهمال", {get: () => renderConfigured("ticket_اهمال")});
+Object.defineProperty(templates, "ازالة", {get: () => renderConfigured("ticket_ازالة")});
+templates["انتداب"] = (days=5) => renderConfigured("ticket_انتداب", {days});
+Object.defineProperty(templates, "موادع", {get: () => renderConfigured("ticket_موادع")});
+Object.defineProperty(templates, "انعاش", {get: () => renderConfigured("ticket_انعاش")});
+Object.defineProperty(templates, "شكوى", {get: () => renderConfigured("ticket_شكوى")});
+
+Object.defineProperty(templates, "قياديتسجيل", {get: () => renderConfigured("ticket_قياديتسجيل")});
+Object.defineProperty(templates, "قياديعودة", {get: () => renderConfigured("ticket_قياديعودة")});
+const quickMap = { internalLeave: [{ key: 'داخلية', label: 'صيغة الإجازة الداخلية' }], assignment: [{ key: 'انتداب', label: 'صيغة قبول الانتداب', dynamic: true }] };
+
+function hideQuickPanel(){ document.getElementById('quickPanel').style.display = 'none'; }
+
+function showQuickTemplates(context, opts = {}){
+  let defs = [];
+  if(context === 'resignation'){ defs = getResignationTemplatesByLevel(opts.level); } 
+  else if(context === 'externalLeave'){ defs = getExternalTemplatesByType(opts.type); } 
+  else { defs = quickMap[context] || []; }
+  const panel = document.getElementById('quickPanel');
+  const card = document.querySelector('#' + context + ' .decision-card');
+  if (card && panel.parentElement !== card) card.append(panel);
+  const list = document.getElementById('quickList');
+  list.innerHTML = '';
+  defs.forEach(item => {
+    const wrap = document.createElement('div');
+    wrap.className = 'quick-item';
+    const btn = document.createElement('button');
+    btn.className = 'quick-copy';
+    btn.textContent = 'نسخ ' + item.label;
+    btn.onclick = () => {
+      let text = (item.dynamic) ? templates['انتداب'](document.getElementById('ass_duration')?.value || 5) : templates[item.key];
+      navigator.clipboard.writeText(text).then(()=>alert('✅ تم النسخ!'));
+    };
+    wrap.appendChild(btn);
+    list.appendChild(wrap);
+  });
+  panel.style.display = defs.length ? 'block' : 'none';
+}
+
+function copySpecificTemplate(key) { navigator.clipboard.writeText(templates[key]).then(() => alert("✅ تم النسخ!")); }
+
+function showTemplate() {
+  const sel = document.getElementById('templateSelect')?.value;
+  const box = document.getElementById('templateBox');
+  document.getElementById('daysBox').style.display = (sel === 'انتداب') ? 'block' : 'none';
+  box.textContent = (sel === 'انتداب') ? templates['انتداب'](document.getElementById('daysInput').value) : templates[sel] || '';
+}
+
+function updateDays() { document.getElementById('templateBox').textContent = templates['انتداب'](document.getElementById('daysInput').value); }
+function copyTemplate() { navigator.clipboard.writeText(document.getElementById('templateBox').textContent).then(()=>alert('✅ تم النسخ!')); }
+
+function getResignationTemplatesByLevel(level){
+  if(level === 'متدرب') return [{ key: 'سفلة', label: 'صيغة المتدرب' }];
+  if(level === 'مستوى 1') return [{ key: 'رفض', label: 'صيغة مستوى 1' }];
+  if(level === 'مستوى 2 فما فوق') return [{ key: 'قبولاستقالة', label: 'صيغة القبول' }];
+  return [];
+}
+function getExternalTemplatesByType(type){
+  if(type === 'اجازة خارجية') return [{ key: 'خارجية', label: 'صيغة الإجازة' }];
+  if(type === 'انتهاء اجازة خارجية') return [{ key: 'عودةخارجية', label: 'صيغة العودة' }];
+  return [];
+}
+// تحويل القوائم المنسدلة إلى أزرار اختيار (القائمة الأصلية تبقى مخفية لحفظ القيمة)
+const nativeSelectValue=Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value');
+function renderChoiceGroup(select){
+ const group=select.nextElementSibling;group.replaceChildren();
+ for(const option of select.options){if(!option.value)continue;const button=document.createElement('button');button.type='button';button.textContent=option.textContent.trim();button.setAttribute('aria-pressed',String(nativeSelectValue.get.call(select)===option.value));button.onclick=()=>{select.value=option.value;select.dispatchEvent(new Event('change',{bubbles:true}));};group.append(button);}
+}
+function enhanceSelect(select){
+ if(select.dataset.choiceReady==='1'&&select.nextElementSibling?.classList.contains('choice-group'))return;
+ if(select.nextElementSibling?.classList.contains('choice-group'))select.nextElementSibling.remove();
+ select.dataset.choiceReady='1';select.classList.add('choice-native');
+ const group=document.createElement('div');group.className='choice-group';group.setAttribute('role','group');select.after(group);
+ Object.defineProperty(select,'value',{configurable:true,get(){return nativeSelectValue.get.call(this);},set(v){nativeSelectValue.set.call(this,v);renderChoiceGroup(this);}});
+ new MutationObserver(()=>renderChoiceGroup(select)).observe(select,{childList:true});
+ renderChoiceGroup(select);
+}
+function enhanceAllSelects(){document.querySelectorAll('#mobileSection,.form-section:not(#formulaSettings) select').forEach(enhanceSelect);}
+document.querySelectorAll('.choice-group').forEach(e=>e.remove());document.querySelectorAll('[data-choice-ready]').forEach(e=>e.removeAttribute('data-choice-ready'));
+const originalSyncCustomForms=syncCustomForms;
+syncCustomForms=function(){originalSyncCustomForms();enhanceAllSelects();};
+initializeFormulaSettings();
+enhanceAllSelects();
+document.getElementById('templateSelect').addEventListener('change',()=>{if(innerWidth<=600)document.getElementById('templateBox').closest('.decision-card').scrollIntoView({behavior:'smooth',block:'start'});});
+function openSettingsFromLink(){
+ if(window.location.hash==='#settings')showForm('formulaSettings');
+ else if(document.getElementById('formulaSettings').style.display==='block')showForm(document.getElementById('mobileSection').value||'internalLeave');
+}
+window.addEventListener('hashchange',openSettingsFromLink);
+openSettingsFromLink();
+</script>
+</body>
+</html>
